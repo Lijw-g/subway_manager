@@ -4,7 +4,6 @@ import com.subway.manager.model.User;
 import com.subway.manager.service.AbstractService;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -23,12 +22,12 @@ public class UserService extends AbstractService {
     * @return java.lang.String
     * @createDate
     **/
-    public  String add(User user) {
-        return "success";
+    public int add(User user) {
+        return sqlSession.insert("user.insert",user);
     }
 
-    public String editUser(User user) {
-        return "success";
+    public int editUser(User user) {
+        return sqlSession.update("user.update",user);
     }
 
     public List<User> getList() {

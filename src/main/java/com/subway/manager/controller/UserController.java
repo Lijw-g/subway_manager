@@ -2,6 +2,8 @@ package com.subway.manager.controller;
 
 import com.subway.manager.model.User;
 import com.subway.manager.service.system.UserService;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,20 +24,23 @@ import java.util.List;
 public class UserController {
     @Autowired
     private UserService userService;
+
     @GetMapping("/list")
     @ResponseBody
-    public List<User> getListUser(){
+    @ApiOperation(value = "查询所有用户",notes = "查询方法")
+    public List<User> getListUser() {
         return userService.getList();
     }
 
     @PostMapping("add")
     @ResponseBody
-    public Object addUser(User user) { return new User();
+    public int addUser(User user) {
+        return userService.add(user);
     }
 
     @PostMapping("edit")
     @ResponseBody
-    public String editUser(User user) {
+    public int editUser(User user) {
         return userService.editUser(user);
     }
 

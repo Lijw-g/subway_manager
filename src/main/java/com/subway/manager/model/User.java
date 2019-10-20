@@ -22,7 +22,7 @@ public class User {
     private Date lastLoginTime;
     /** 关联属性 1
      */
-    private List<String> roleCodes;
+    private List<String> roleCode;
     private Integer id;
     private String createUser;
     private Date createTime;
